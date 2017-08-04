@@ -31,7 +31,7 @@ extension Archive {
         let entryURL = baseURL.appendingPathComponent(path)
         guard fileManager.isReadableFile(atPath: entryURL.path) else {
             throw NSError(domain: NSCocoaErrorDomain, code: CocoaError.fileReadNoPermission.rawValue,
-                          userInfo: [NSFilePathErrorKey: url.path])
+                          userInfo: [NSFilePathErrorKey: entryURL.path])
         }
         let type = try FileManager.typeForItem(at: entryURL)
         let modDate = try FileManager.fileModificationDateTimeForItem(at: entryURL)
